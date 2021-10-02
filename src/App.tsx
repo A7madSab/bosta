@@ -4,7 +4,7 @@ import { FC } from "react"
 import theme from "theme"
 
 const App: FC = () => {
-  return <ThemeProvider theme={theme}>{renderRoutes({ routes })}</ThemeProvider>
+    return <ThemeProvider theme={theme}>{renderRoutes({ routes })}</ThemeProvider>
 }
 
 export default App

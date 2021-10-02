@@ -4,21 +4,21 @@ import { makeStyles } from "@mui/styles"
 import { Theme } from "@mui/material"
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    width: "100%",
-    height: "100vh",
-    backgroundColor: theme.palette.primary.light
-  }
+    root: {
+        width: "100%",
+        height: "100vh",
+        backgroundColor: theme.palette.primary.light,
+    },
 }))
 
 const LoadingScreen = () => {
-  const classes = useStyles()
+    const classes = useStyles()
 
-  return (
-    <Grid container justifyContent="center" alignItems="center" className={classes.root}>
-      <CircularProgress color="primary" size={120} />
-    </Grid>
-  )
+    return (
+        <Grid container justifyContent="center" alignItems="center" className={classes.root}>
+            <CircularProgress color="primary" size={120} />
+        </Grid>
+    )
 }
 
 export default LoadingScreen
