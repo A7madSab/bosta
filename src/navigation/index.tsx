@@ -1,5 +1,5 @@
 import { Suspense, Fragment, lazy, FC } from "react"
-import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 
 import LoadingScreen from "screens/LoadingScreen"
 import Layout from "layout"
@@ -21,6 +21,12 @@ const routes = [
     {
         exact: true,
         layout: Layout,
+        path: "/en",
+        component: lazy(() => import("views/Home")),
+    },
+    {
+        exact: true,
+        layout: Layout,
         path: "/404",
         component: lazy(() => import("views/NotFound")),
     },
@@ -28,30 +34,28 @@ const routes = [
 
 export const renderRoutes = ({ routes: r }: { routes: Routes[] }) => {
     return (
-        <BrowserRouter>
-            <Suspense fallback={<LoadingScreen />}>
-                <Switch>
-                    {r.map((route) => {
-                        const Component = route.component
-                        const ComponentLayout = route.layout || Fragment
+        <Suspense fallback={<LoadingScreen />}>
+            <Switch>
+                {r.map((route) => {
+                    const Component = route.component
+                    const ComponentLayout = route.layout || Fragment
 
-                        return (
-                            <Route
-                                key={route.path}
-                                path={route.path}
-                                exact={route.exact}
-                                render={(props) => (
-                                    <ComponentLayout>
-                                        <Component {...props} />
-                                    </ComponentLayout>
-                                )}
-                            />
-                        )
-                    })}
-                    <Redirect to="/404" />
-                </Switch>
-            </Suspense>
-        </BrowserRouter>
+                    return (
+                        <Route
+                            key={route.path}
+                            path={route.path}
+                            exact={route.exact}
+                            render={(props) => (
+                                <ComponentLayout>
+                                    <Component {...props} />
+                                </ComponentLayout>
+                            )}
+                        />
+                    )
+                })}
+                <Redirect to="/404" />
+            </Switch>
+        </Suspense>
     )
 }
 

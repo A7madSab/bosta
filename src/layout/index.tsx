@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Header from "layout/Header"
 import Footer from "layout/Footer"
+import Bottom from "layout/Bottom"
 
 const Layout: FC = ({ children }) => {
     return (
@@ -8,6 +9,7 @@ const Layout: FC = ({ children }) => {
             <Header />
             {children}
             <Footer />
+            <Bottom />
         </div>
     )
 }
