@@ -6,5 +6,11 @@
     "Contact_Sales": "كلم المبيعات",
     "Shipments": "الشحنات",
     "Our_Pricing": "التسعير",
-    "Bottom_Text": "Copyright ©2019 bosta.co"
+    "Bottom_Text": "Copyright ©2019 bosta.co",
+    "Please_Enter_Tracking_Code": "الرجاء إدخال رقم الشحنة وتتبع الشحنة الخاصة بك",
+    "Shipment_No": "رقم الشحنة",
+    "Enter_your_tracking_No": "أدخل رقم التتبع الخاص بك.",
+    "DELIVERED": "تم التوصيل",
+    "Last_Update": "اخر تحديث",
+    "Trade_Name": "اسم التاجر"
 }

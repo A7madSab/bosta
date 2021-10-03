@@ -6,5 +6,11 @@
     "Contact_Sales": "Contact Sales",
     "Shipments": "Shipments",
     "Our_Pricing": "Our Pricing",
-    "Bottom_Text": "Copyright ©2019 bosta.co"
+    "Bottom_Text": "Copyright ©2019 bosta.co",
+    "Please_Enter_Tracking_Code": "Please Enter Tracking Code",
+    "Shipment_No": "Shipment No",
+    "Enter_your_tracking_No": "Enter your tracking No",
+    "DELIVERED": "DELIVERED",
+    "Last_Update": "Last_Update",
+    "Trade_Name": "Trade Name"
 }

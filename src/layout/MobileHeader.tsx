@@ -6,12 +6,10 @@ import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import MenuItem from "@mui/material/MenuItem"
 import MenuIcon from "@mui/icons-material/Menu"
-import TextField from "@mui/material/TextField"
 import IconButton from "@mui/material/IconButton"
 import { headerLinks } from "appConstants"
-import SearchIcon from "@mui/icons-material/Search"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import { Typography } from "@mui/material"
+import Tracking from "component/Tracking"
 
 const MobileHeader = () => {
     const [menu, setMenu] = useState(null)
@@ -52,20 +50,7 @@ const MobileHeader = () => {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <Typography variant="h6">
-                    <strong>Track your shipment</strong>
-                </Typography>
-                <Typography>Enter your tracking No.</Typography>
-                <Grid container direction="row" alignItems="center" justifyContent="space-between">
-                    <Grid item xs={10}>
-                        <TextField sx={{ padding: "0px" }} id="outlined-basic" placeholder="Outlined" variant="outlined" />
-                    </Grid>
-                    <Grid item container justifyContent="flex-end" xs={2}>
-                        <IconButton sx={{ backgroundColor: "#FF0000" }}>
-                            <SearchIcon color="secondary" />
-                        </IconButton>
-                    </Grid>
-                </Grid>
+                <Tracking menu />
             </Menu>
 
             <Menu
