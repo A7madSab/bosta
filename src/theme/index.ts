@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material"
 
-const createMUITheme = ({ locale }: { locale: "ar" | "en" }) => {
-    const dir = locale === "ar" ? "rtl" : "ltr"
+const createMUITheme = ({ lang }: { lang: "ar" | "en" }) => {
+    const dir = lang === "ar" ? "rtl" : "ltr"
     document.body.dir = dir
 
     const theme = createTheme({

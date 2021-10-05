@@ -9,15 +9,17 @@ import SearchIcon from "@mui/icons-material/Search"
 
 interface TrackingProps {
     menu?: Boolean
+    setTrackingMenu?: any
 }
 
-const Tracking: FC<TrackingProps> = ({ menu }) => {
+const Tracking: FC<TrackingProps> = ({ menu, setTrackingMenu }) => {
     const { formatMessage: f } = useIntl()
     const { push } = useHistory()
     const [shipmentNumber, setShipmentNumber] = useState<string>("")
 
     const trackShipment = () => {
         push(`/?tracking=${shipmentNumber}`)
+        if (setTrackingMenu) setTrackingMenu(undefined)
     }
 
     return (
@@ -43,6 +45,7 @@ const Tracking: FC<TrackingProps> = ({ menu }) => {
 
 Tracking.defaultProps = {
     menu: false,
+    setTrackingMenu: undefined,
 }
 
 export default Tracking

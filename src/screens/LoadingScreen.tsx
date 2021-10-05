@@ -1,15 +1,13 @@
 import Grid from "@mui/material/Grid"
 import CircularProgress from "@mui/material/CircularProgress"
 import { makeStyles } from "@mui/styles"
-import { Theme } from "@mui/material"
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         width: "100%",
         height: "100vh",
-        backgroundColor: theme.palette.primary.light,
     },
-}))
+})
 
 const LoadingScreen = () => {
     const classes = useStyles()

@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, FC } from "react"
 
+import { headerLinks } from "appConstants"
 import Grid from "@mui/material/Grid"
 import Menu from "@mui/material/Menu"
 import AppBar from "@mui/material/AppBar"
@@ -7,13 +8,14 @@ import Toolbar from "@mui/material/Toolbar"
 import MenuItem from "@mui/material/MenuItem"
 import MenuIcon from "@mui/icons-material/Menu"
 import IconButton from "@mui/material/IconButton"
-import { headerLinks } from "appConstants"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import Tracking from "component/Tracking"
 
-const MobileHeader = () => {
+interface MobileHeaderProps {
+    setTrackingMenu: any
+}
+
+const MobileHeader: FC<MobileHeaderProps> = ({ setTrackingMenu }) => {
     const [menu, setMenu] = useState(null)
-    const [trackingmenu, setTrackingMenu] = useState(null)
 
     const handleClose = () => setMenu(null)
     const handleClick = (event: any) => setMenu(event.currentTarget)
@@ -39,19 +41,6 @@ const MobileHeader = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
-
-            <Menu
-                id="shipment-menu"
-                anchorEl={trackingmenu}
-                open={Boolean(trackingmenu)}
-                PaperProps={{ style: { padding: "25px 20px", width: "250px", background: "#fafafa" } }}
-                onClose={() => setTrackingMenu(null)}
-                MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                }}
-            >
-                <Tracking menu />
-            </Menu>
 
             <Menu
                 id="basic-menu"
