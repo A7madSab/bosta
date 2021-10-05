@@ -24,16 +24,20 @@ const Tracking: FC<TrackingProps> = ({ menu, setTrackingMenu }) => {
 
     return (
         <>
-            {!menu && <Typography>{f({ id: "Enter_your_tracking_No" })}</Typography>}
-            <Typography color="primary" variant="h6">
+            {!menu && (
+                <Typography>
+                    <strong>{f({ id: "Enter_your_tracking_No" })}</strong>
+                </Typography>
+            )}
+            <Typography color="primary" sx={{ paddingTop: "10px" }}>
                 <strong>{f({ id: "Tracking_Shipment" })}</strong>
             </Typography>
             {menu && <Typography>{f({ id: "Enter_your_tracking_No" })}</Typography>}
             <Grid container direction="row" alignItems="center" justifyContent="space-between">
                 <Grid item xs={10}>
-                    <TextField type="number" value={shipmentNumber} onChange={(e) => setShipmentNumber(e.target.value)} sx={{ padding: "0px" }} id="outlined-basic" placeholder="Outlined" variant="outlined" />
+                    <TextField fullWidth inputProps={{ style: { padding: "8px 4px" } }} type="number" value={shipmentNumber} onChange={(e) => setShipmentNumber(e.target.value)} sx={{ padding: "0px" }} id="outlined-basic" placeholder={f({ id: "Tracking_Code" })} variant="outlined" />
                 </Grid>
-                <Grid item container justifyContent="flex-end" xs={2}>
+                <Grid item xs={2} container justifyContent="flex-end">
                     <IconButton onClick={trackShipment} sx={{ backgroundColor: "#FF0000" }}>
                         <SearchIcon color="secondary" />
                     </IconButton>

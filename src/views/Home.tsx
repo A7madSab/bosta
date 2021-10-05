@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useIntl } from "react-intl"
-// import axios from "axios"
+
+import Box from "@mui/material/Box"
 import Card from "@mui/material/Card"
 import Grid from "@mui/material/Grid"
 import Container from "@mui/material/Container"
@@ -16,12 +17,25 @@ import ShipmentAddress from "component/ShipmentAddress"
 import ShipmentDeliveryStep from "component/ShipmentDeliveryStep"
 import LoadingScreen from "screens/LoadingScreen"
 import { getShipmentDetails } from "API"
+import { StatusToStepsMapper } from "appConstants"
 
 const useStyles = makeStyles({
     card: {
         padding: "16px",
-        margin: "80px 0px",
+        maxWidth: "300px",
+        width: "100%",
+        margin: "50px 0px",
         borderRadius: "10px",
+    },
+    titleContianer: {
+        border: "1px solid #efefef",
+        borderRadius: "13px 13px 0px 0px",
+        padding: "24px",
+    },
+    ShipmentDeliveryStepContainer: {
+        border: "1px solid #efefef",
+        borderRadius: "0px 0px 13px 13px",
+        padding: "24px",
     },
 })
 
@@ -51,51 +65,72 @@ const Home = () => {
 
     return (
         <Container>
-            <Grid container>
+            <Grid container justifyContent="center">
                 {!shipment && (
-                    <Container maxWidth="md">
-                        <Card className={classes.card}>
-                            <Tracking />
-                        </Card>
-                    </Container>
+                    <Card className={classes.card}>
+                        <Tracking />
+                    </Card>
                 )}
 
                 {shipment && (
                     <Grid container>
-                        <Grid item container>
+                        <Grid xs={12} item container justifyContent="center" alignItems="center" className={classes.titleContianer}>
                             <Grid item xs={3}>
-                                <Typography>
-                                    {f({ id: "Shipment_No" })}. {shipment?.TrackingNumber}
+                                <Typography color="gray" variant="subtitle1">
+                                    {f({ id: "Shipment_No" })}: {shipment?.TrackingNumber}
                                 </Typography>
-                                <Typography>{f({ id: shipment?.CurrentStatus?.state })}</Typography>
+                                <Typography>
+                                    <strong>{f({ id: shipment?.CurrentStatus?.state })}</strong>
+                                </Typography>
                             </Grid>
 
                             <Grid item xs={3}>
-                                <Typography>{f({ id: "Last_Update" })}</Typography>
-                                <Typography>{formateDate({ date: shipment?.CurrentStatus?.timestamp })}</Typography>
+                                <Typography color="gray" variant="subtitle1">
+                                    {f({ id: "Last_Update" })}
+                                </Typography>
+                                <Typography>
+                                    <strong>{formateDate({ date: shipment?.CurrentStatus?.timestamp })}</strong>
+                                </Typography>
                             </Grid>
 
                             <Grid item xs={3}>
-                                <Typography>{f({ id: "Trade_Name" })}</Typography>
-                                <Typography>SOUQ</Typography>
+                                <Typography color="gray" variant="subtitle1">
+                                    {f({ id: "Trade_Name" })}
+                                </Typography>
+                                <Typography>
+                                    <strong>SOUQ.com</strong>
+                                </Typography>
                             </Grid>
 
                             <Grid item xs={3}>
-                                <Typography>{f({ id: "Delivery_Date" })}</Typography>
-                                <Typography>{formateDate({ date: shipment?.CurrentStatus?.timestamp })}</Typography>
+                                <Typography color="gray" variant="subtitle1">
+                                    {f({ id: "Delivery_Date" })}
+                                </Typography>
+                                <Typography>
+                                    <strong>{formateDate({ date: shipment?.CurrentStatus?.timestamp })}</strong>
+                                </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item container>
-                            <ShipmentDeliveryStep step={1} />
+                        <Grid xs={12} item container className={classes.ShipmentDeliveryStepContainer}>
+                            <ShipmentDeliveryStep
+                                // @ts-ignore
+                                step={StatusToStepsMapper[shipment?.CurrentStatus?.state]}
+                            />
                         </Grid>
-                        <Grid item container>
-                            <Grid item xs={8}>
-                                <Typography>{f({ id: "Shipment_Details" })}</Typography>
+                        <Grid xs={12} item container spacing={2} style={{ paddingTop: "16px" }}>
+                            <Grid item md={8} xs={12}>
+                                <Typography style={{ padding: "8px 0px" }}>
+                                    <strong>{f({ id: "Shipment_Details" })}</strong>
+                                </Typography>
                                 <ShipmentDetails details={shipment.TransitEvents} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <Typography>{f({ id: "Delivery_Address" })}</Typography>
-                                <ShipmentAddress />
+                            <Grid item md={4} xs={12}>
+                                <Typography style={{ padding: "8px 0px" }}>
+                                    <strong>{f({ id: "Delivery_Address" })}</strong>
+                                </Typography>
+                                <Box mb={2}>
+                                    <ShipmentAddress />
+                                </Box>
                                 <ShipmentIssue />
                             </Grid>
                         </Grid>

@@ -24,3 +24,8 @@ export const steps = [
         label: "Shipment_Delivery",
     },
 ]
+
+export const StatusToStepsMapper = {
+    DELIVERED: 3,
+    DELIVERED_TO_SENDER: 2,
+}

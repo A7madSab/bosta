@@ -9,8 +9,12 @@ import TwitterIcon from "@mui/icons-material/Twitter"
 
 const useStyles = makeStyles({
     root: {
+        marginTop: "16px",
         padding: "16px 0px",
         backgroundColor: "#141414",
+    },
+    link: {
+        textDecoration: "none",
     },
 })
 
@@ -24,7 +28,7 @@ const Footer = () => {
                 <Grid container>
                     <Grid item xs={6}>
                         <img src="/assets/logo/white-bosta-logo.svg" alt="white-bosta-logo" />
-                        <a href="mailto:help@bosta.co">
+                        <a className={classes.link} href="mailto:help@bosta.co">
                             <Typography color="white">help@bosta.co</Typography>
                         </a>
                         <FacebookIcon sx={{ color: "#FFFFFF" }} />

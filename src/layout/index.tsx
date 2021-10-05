@@ -7,7 +7,7 @@ import Bottom from "layout/Bottom"
 
 const useStyles = makeStyles({
     root: {
-        paddingTop: "80px",
+        paddingTop: "100px",
     },
 })
 

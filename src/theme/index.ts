@@ -33,6 +33,13 @@ const createMUITheme = ({ lang }: { lang: "ar" | "en" }) => {
                     },
                 },
             },
+            MuiTypography: {
+                styleOverrides: {
+                    subtitle1: {
+                        fontSize: "14px",
+                    },
+                },
+            },
         },
         typography: {
             fontFamily: "Cairo",
